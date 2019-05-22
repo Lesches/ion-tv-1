@@ -17,6 +17,18 @@
 
     <ion-card-content>
       <ion-text [innerHTML]="show.summary"></ion-text>
+      <ion-list *ngFor="let season of show.episodes">
+        <ion-list-header>
+          <ion-label>Season {{season[0].season}}</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let episode of season">
+          <ion-label>{{episode.season}}{{episode.episode}} - {{episode.name}}
+
+        </ion-label>
+        </ion-item>
+      </ion-list>
+
+
     </ion-card-content>
   </ion-card>
 </ion-content>
