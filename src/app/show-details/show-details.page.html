@@ -36,7 +36,7 @@
         <ion-row>
           <ion-col *ngFor="let season of show.episodes; let i = index" sizeMd="4">
             <ion-button *ngIf = "i%2 == 0" color="primary" padding expand="block" (click)="loadSeason(i)">Season {{season[0].season}}</ion-button>
-            <ion-button *ngIf = "i%2 == 0" color="secondary" padding expand="block" (click)="loadSeason(i)">Season {{season[0].season}}</ion-button>
+            <ion-button *ngIf = "i%2 == 1" color="secondary" padding expand="block" (click)="loadSeason(i)">Season {{season[0].season}}</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
