@@ -7,26 +7,39 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngIf="show">
     <ion-card-header>
-      <ion-card-title>{{show.name}}</ion-card-title>
-      <ion-card-subtitle><span *ngIf="show.status">Status: <strong>{{show.status}}</strong></span>
-        <span *ngIf="show.status && show.premiered">   |   </span>
-        <span *ngIf="show.premiered"> Aired: <strong>{{show.premiered | date}}</strong></span></ion-card-subtitle>
+      <ion-card-title color="primary">{{show.name}}</ion-card-title>
+      <ion-card-subtitle color="secondary">
+        <span *ngIf="show.status && show.premiered">Status: <strong>{{show.status}}</strong>
+
+          |    Aired: <strong>{{show.premiered | date}}</strong>
+            </span>
+        </ion-card-subtitle>
+
+
+
     </ion-card-header>
 
     <ion-card-content>
-      <ion-text [innerHTML]="show.summary"></ion-text>
-      <ion-list *ngFor="let season of show.episodes">
-        <ion-list-header>
-          <ion-label>Season {{season[0].season}}</ion-label>
-        </ion-list-header>
-        <ion-item *ngFor="let episode of season">
-          <ion-label>{{episode.season}}{{episode.episode}} - {{episode.name}}
+      <ion-item-divider><ion-text [innerHTML]="show.summary" color="dark"></ion-text> </ion-item-divider>
 
-        </ion-label>
-        </ion-item>
-      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-text *ngIf="show.lastEp"><strong>Last Ep: </strong> S{{show.lastEp.season | episodeNumber}}E{{show.lastEp.episode | episodeNumber}}{{show.lastEp.name}}</ion-text>
+          </ion-col>
+          <ion-col text-end>
+            <ion-text *ngIf="show.nextEp"><strong>Next Ep: </strong> S{{show.nextEp.season | episodeNumber}}E{{show.nextEp.episode | episodeNumber}}{{show.nextEp.name}}</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngFor="let season of show.episodes; let i = index" sizeMd="4">
+            <ion-button *ngIf = "i%2 == 0" color="primary" padding expand="block" (click)="loadSeason(i)">Season {{season[0].season}}</ion-button>
+            <ion-button *ngIf = "i%2 == 0" color="secondary" padding expand="block" (click)="loadSeason(i)">Season {{season[0].season}}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
 
     </ion-card-content>
