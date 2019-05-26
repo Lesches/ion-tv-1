@@ -1,0 +1,7 @@
+{
+  "appId": "com.iontv.Lesches",
+  "appName": "ion-tv",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

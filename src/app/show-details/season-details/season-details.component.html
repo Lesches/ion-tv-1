@@ -8,14 +8,14 @@
 
       </ion-button>
     </ion-buttons>
-    <ion-title>{{showNmae}} - Season {{episodeList[0].season}}    </ion-title>
+    <ion-title>{{showName}} - Season {{episodeList[0].season}}    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let episode of episodeList">
-      <ion-thumbnail *ngIf="episdoe.image">
+      <ion-thumbnail *ngIf="episode.image">
         <img src="{{episode.image}}">
       </ion-thumbnail>
       <ion-label margin>
